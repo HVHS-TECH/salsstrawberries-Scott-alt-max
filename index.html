@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sal’s Strawberry Saloon</title>
-  <link rel="stylesheet" href="style.css" />
-  <script type="module" src="./main.mjs"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sal’s Strawberry Saloon</title>
+    <link rel="stylesheet" href="style.css" />  
+      
+    <!-- firebase start ****************************************-->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- firebase end ******************************************-->
+    <script type="module" src="./main.mjs"></script>
+  </head>
 <body>
   <div class="container">
     <h1>Sal’s Strawberry Saloon</h1>
@@ -27,7 +31,7 @@
       <!-- add more fields here -->
     </form>
 
-    <button onclick="fb_write()">Submit</button>
+    <button onclick="fb_writeTo()">Submit</button>
 
     <p id="statusMessage"></p>
   </div>
