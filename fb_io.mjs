@@ -13,7 +13,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signO
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
 
 /**************************************************************/
-export { fb_initialise, fb_authenticate, fb_writeTo };
+export { fb_initialise, fb_authenticate, fb_logOut, fb_writeTo };
 fb_initialise();
 
 function fb_initialise() {
