@@ -13,7 +13,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signO
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
 
 /**************************************************************/
-export { fb_initialise, fb_authenticate, fb_logOut, fb_writeTo };
+export { fb_initialise, fb_authenticate, fb_logOut, submitform };
 fb_initialise();
 
 function fb_initialise() {
@@ -108,10 +108,11 @@ function fb_writeTo() {
         console.log(error);
     });
 }
-/*function fb_read() {
+function fb_read() {
     console.log('%c fb_read: ', 'color: ' + COL_C + '; background-color: ' + COL_B + ';'); //DIAG
 
-    const REF = ref(fb_gameDB, "Users/UserID");
+    const FILEPATH = "Users/" + fb_uid;
+    const REF = ref(fb_gameDB, FILEPATH);
 
     get(REF).then((snapshot) => {
         var fb_data = snapshot.val();
@@ -119,7 +120,7 @@ function fb_writeTo() {
         if (fb_data != null) {
             console.log("Successfully read database information:");
             console.log(fb_data);
-
+            fb_dislay(fb_data);
         } else {
             console.log("Attempting to read a value that doesn't exist");
             console.log(fb_data);
@@ -128,7 +129,31 @@ function fb_writeTo() {
         console.log("Error with reading the database");
         console.log(error);
     });
-}*/
+}
+function fb_dislay(fb_data) {
+    console.log('%c fb_dislay: ', 'color: ' + COL_C + '; background-color: ' + COL_B + ';'); //DIAG
+
+    document.getElementById("response").innerHTML = `
+        <div style="background: rgb(248, 186, 104);; border: 1px solid #8b0000; padding: 1rem; border-radius: 8px;">
+            <p>Kia ora ${fb_data.name},</p>
+            <p>Thank you for joining us at Scott’s Strawberry Saloon (and other fruit products)! We're thrilled to have you as a customer!</p>
+            <p>Based on your preferences, we’ll be sending you personalized recommendations for tasty and healthy treats made with the freshest fruit — especially those ${fb_data.favoriteFruit} we heard you love!</p>
+            <p>At the moment, we want to offer you a deal to get fresh ${fb_data.favoriteFruit} ${fb_data.fruitQuantity}x a week!!</p>
+            <p>Ngā mihi nui,</p>
+            <p><em>The Scott’s Strawberry Saloon Team</em></p>
+        </div>
+    `;
+}
+function submitform() {
+    // Check the user is logged in
+    if(fb_uid != null) {
+        document.getElementById("statusMessage").innerHTML = ("");
+        fb_writeTo();
+        fb_read();
+    } else {
+        document.getElementById("statusMessage").innerHTML = ("User must be logged in");
+    }
+}
 /*function fb_readAll() {
     console.log('%c fb_readAll: ', 'color: ' + COL_C + '; background-color: ' + COL_B + ';'); //DIAG
 

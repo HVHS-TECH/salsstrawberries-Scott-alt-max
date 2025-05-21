@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sal’s Strawberry Saloon</title>
+    <title>Scott’s Strawberry Saloon</title>
     <link rel="stylesheet" href="style.css" />  
       
     <!-- firebase start ****************************************-->
@@ -13,7 +13,7 @@
   </head>
 <body>
   <div class="container">
-    <h1>Sal’s Strawberry Saloon</h1>
+    <h1>Scott’s Strawberry Saloon</h1>
     <h2>(and other fruit products)</h2>
     <p>Here is everyone's favorite fruit</p>
 
@@ -32,8 +32,12 @@
       <!-- add more fields here -->
     </form>
 
-    <button onclick="fb_writeTo()">Submit</button>
+    <button onclick="submitform()">Submit</button>
     <button onclick="fb_logOut()">Log Out</button>
+
+    <br>
+    <div id="response">
+    </div>
 
     <p id="statusMessage"></p>
   </div>
