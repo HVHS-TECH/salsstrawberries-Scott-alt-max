@@ -51,9 +51,11 @@ function fb_authenticate() {
     });
     signInWithPopup(AUTH, PROVIDER).then((result) => {
         console.log("Authentication successful"); //DIAG
-        fb_uid = result.user.uid;
         console.log("User Email: " + result._tokenResponse.email); //DIAG
         console.log("User Local ID: " + fb_uid); //DIAG
+
+        document.getElementById("statusMessage").innerHTML = ("");
+        fb_uid = result.user.uid;
         //console.log(result); //DIAG
     })
     .catch((error) => {
